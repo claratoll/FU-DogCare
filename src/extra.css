@@ -5,18 +5,10 @@
 }
 
 body {
-  background-color: #284359;
+  margin: 0;
+  display: flex;
+  place-items: center;
 }
-
-/*
-
-light gray is #75a89f
-salmon is #d4866d
-dark blue is #284359
-dark gray is #374a5b
-lilac is #30182c
-
-*/
 
 h1 {
   font-size: 3.2em;
@@ -26,27 +18,21 @@ h1 {
 h2 {
   font-size: 40px;
   margin-bottom: 10px;
-  color: #30182c;
+  color: #a987e9;
 }
 
 p {
   max-width: 900px; /* Set the maximum width for <p> elements */
   margin: 0 auto; /* Center-align <p> elements within their containers */
   padding: 10px;
-  color: #374a5b;
 }
 
 .logo {
   background-image: url(assets/header.png);
   background-size: cover;
   background-position: center;
-
-  padding: 100px;
+  padding: 200px;
   background-attachment: fixed;
-}
-
-.logo p {
-  color: white;
 }
 
 button {
@@ -59,25 +45,11 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #75a89f;
+  border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-.display_dogs {
-  background-color: white;
-  margin: 30px;
-  padding: 10px;
-}
-
-.display_dogs img {
-  max-width: 700px;
-}
-
-.display_dogs > h2:hover {
-  color: #75a89f;
 }
 
 @media (max-width: 600px) {
