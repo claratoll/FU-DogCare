@@ -16,27 +16,53 @@ const AllDogs = (props) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // Check if there is at least one dog in the array
+    if (dogs.length > 0) {
+      console.log("First dog name:", dogs[0].name);
+    } else {
+      console.log("no dogs");
+    }
+  }, [dogs]);
+
   const dog = dogs[currentDog];
 
-  console.log(dogs[1]);
+  //console.log(dog);
 
   const displayDogImages = () => {
-    return dog.img.map((imageUrl, index) => (
-      <img key={index} src={imageUrl} alt={`Dog ${index + 1}`} />
-    ));
+    if (dog && dogs.length > 0) {
+      return (
+        <div>
+          {dogs.map((dog, index) => (
+            <div key={index} className="display_dogs">
+              <h2 onClick={() => props.toOneDog(dog)}>{dog.name}</h2>
+              <p>Age: {dog.age}</p>
+              <p>Breed: {dog.breed}</p>
+              <p>Chip Number: {dog.chipNumber}</p>
+              <p>
+                Owner: {dog.owner.name} {dog.owner.lastName}
+              </p>
+              <p>Phone Number: {dog.owner.phoneNumber}</p>
+              <p>Sex: {dog.sex}</p>
+              {dog.img ? (
+                <img src={dog.img} alt={`Dog ${dog.name}`} />
+              ) : (
+                <div>No dog image available.</div>
+              )}
+            </div>
+          ))}
+        </div>
+      );
+    } else {
+      return <div>No dog data available.</div>;
+    }
   };
 
   return (
     <section>
       <p>Show all dogs</p>
-      <button onClick={props.toOneDog}>GoToOneDog</button>
-      <div>
-        {dog && dog.img && dog.img.length > 0 ? (
-          <div>{displayDogImages()}</div>
-        ) : (
-          <div>No dog images available.</div>
-        )}
-      </div>
+
+      <div>{displayDogImages()}</div>
     </section>
   );
 };
@@ -61,7 +87,7 @@ const getDogs = async () => {
 
   console.log(dogsData);
 
-  return dogsData;
+  return dogsData.record;
 };
 
 export default AllDogs;

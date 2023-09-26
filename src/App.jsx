@@ -13,6 +13,7 @@ function App() {
     ALLDOGS = "alldogs",
     DOG = "dog";
   const [currentScreen, setCurrentScreen] = useState(WELCOME);
+  const [selectedDog, setSelectedDog] = useState(null);
 
   let content = null;
 
@@ -21,10 +22,22 @@ function App() {
       content = <Welcome nextScreenToDogs={() => setCurrentScreen(ALLDOGS)} />;
       break;
     case ALLDOGS:
-      content = <AllDogs toOneDog={() => setCurrentScreen(DOG)} />;
+      content = (
+        <AllDogs
+          toOneDog={(dog) => {
+            setSelectedDog(dog);
+            setCurrentScreen(DOG);
+          }}
+        />
+      );
       break;
     case DOG:
-      content = <Dog backToMain={() => setCurrentScreen(WELCOME)} />;
+      content = (
+        <Dog
+          selectedDog={selectedDog}
+          backToMain={() => setCurrentScreen(WELCOME)}
+        />
+      );
       break;
     default:
       content = <Welcome />;
