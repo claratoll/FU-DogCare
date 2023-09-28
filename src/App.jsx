@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import header from "./assets/header.png";
 
 import "./App.css";
@@ -9,48 +10,33 @@ import Dog from "./components/Dog";
 function App() {
   //create default image och text om inte det funkar
 
-  const WELCOME = "welcome",
-    ALLDOGS = "alldogs",
-    DOG = "dog";
-  const [currentScreen, setCurrentScreen] = useState(WELCOME);
   const [selectedDog, setSelectedDog] = useState(null);
 
-  let content = null;
-
-  switch (currentScreen) {
-    case WELCOME:
-      content = <Welcome nextScreenToDogs={() => setCurrentScreen(ALLDOGS)} />;
-      break;
-    case ALLDOGS:
-      content = (
-        <AllDogs
-          toOneDog={(dog) => {
-            setSelectedDog(dog);
-            setCurrentScreen(DOG);
-          }}
-        />
-      );
-      break;
-    case DOG:
-      content = (
-        <Dog
-          selectedDog={selectedDog}
-          backToMain={() => setCurrentScreen(WELCOME)}
-        />
-      );
-      break;
-    default:
-      content = <Welcome />;
-  }
-
   return (
-    <>
+    <div>
       <div className="logo">
         <h2>Welcome to the Barktastic Adventures</h2>
         <p>Where Dogs Feel at Home!</p>
       </div>
-      {content}
-    </>
+      <Routes>
+        <Route path="/" element={<Welcome />}></Route>
+        <Route
+          path="/dogs"
+          element={
+            <AllDogs
+              selectedDog={selectedDog}
+              setSelectedDog={setSelectedDog}
+            />
+          }
+        ></Route>
+        {/*  <Route path="/dogs/:currentdog" element={<Dog />}></Route>*/}
+        <Route
+          path="/dogs/:currentdog"
+          setSelectedDog={selectedDog}
+          element={<Dog />}
+        ></Route>
+      </Routes>
+    </div>
   );
 }
 
