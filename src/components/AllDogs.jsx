@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const AllDogs = (props) => {
   const [dogs, setDogs] = useState([]);
   const [currentDog, setCurrentDog] = useState(0);
+
+  const navigate = useNavigate();
+  const params = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,21 +26,21 @@ const AllDogs = (props) => {
     if (dogs.length > 0) {
       console.log("First dog name:", dogs[0].name);
     } else {
-      console.log("no dogs");
+      console.log("loading dogs");
     }
   }, [dogs]);
 
   const dog = dogs[currentDog];
 
-  //console.log(dog);
-
   const displayDogImages = () => {
     if (dog && dogs.length > 0) {
       return (
-        <div>
+        <div className="gallery">
           {dogs.map((dog, index) => (
             <div key={index} className="display_dogs">
-              <h2 onClick={() => props.toOneDog(dog)}>{dog.name}</h2>
+              <Link to={`/dogs/` + dog.name} state={{ selectedDog: dog }}>
+                <h2>{dog.name}</h2>
+              </Link>
               <p>Age: {dog.age}</p>
               <p>Breed: {dog.breed}</p>
               <p>Chip Number: {dog.chipNumber}</p>
@@ -60,7 +65,9 @@ const AllDogs = (props) => {
 
   return (
     <section>
-      <p>Show all dogs</p>
+      <Link to="/">
+        <button>Home</button>
+      </Link>
 
       <div>{displayDogImages()}</div>
     </section>

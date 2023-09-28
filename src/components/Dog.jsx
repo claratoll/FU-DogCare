@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Dog = (props) => {
+  const [dogData, setDogData] = useState(null);
+  const currentdog = useParams();
+
+  console.log("dog data is ", dogData);
+
   // Check if there is a selected dog
   if (!props.selectedDog) {
     return <div>No dog data available.</div>;
+  } else {
+    console.log("age is " + props.selectedDog.age);
   }
+
   return (
     <section className="display_dogs">
       <button onClick={props.backToMain}>GoBackToMain</button>
