@@ -41,15 +41,3 @@ function App() {
 }
 
 export default App;
-
-/*
- <div>
-        <p>Slide gallery?</p>
-        <p>About us - our team - Facilities</p>
-        <p>Services - Register your dog</p>
-      </div>
-      <footer>
-        <p>Contact us? Map?</p>
-        <p>Privacy Policy and terms</p>
-        <p>Copyright</p>
-      </footer>*/

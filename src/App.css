@@ -1,7 +1,6 @@
 #root {
   text-align: center;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  height: 100vh;
 }
 
 body {
@@ -87,6 +86,10 @@ button:focus-visible {
 
 .display_dogs > h2:hover {
   color: #75a89f;
+}
+
+.welcome p {
+  color: white;
 }
 
 @media (max-width: 600px) {
