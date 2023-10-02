@@ -44,16 +44,18 @@ const Dog = () => {
   const displayDog = () => {
     return dogsWithSameName.map((selectedDog, index) => (
       <section className="display_dogs" key={index}>
-        <h1>{selectedDog.name}</h1>
-        <p>Age: {selectedDog.age}</p>
-        <p>Breed: {selectedDog.breed}</p>
-        <p>Chip Number: {selectedDog.chipNumber}</p>
-        <p>
-          Owner: {selectedDog.owner.name}
-          {selectedDog.owner.lastName}
-        </p>
-        <p>Phone Number: {selectedDog.owner.phoneNumber}</p>
-        <p>Sex: {selectedDog.sex}</p>
+        <div>
+          <h2>{selectedDog.name}</h2>
+          <p>Age: {selectedDog.age}</p>
+          <p>Breed: {selectedDog.breed}</p>
+          <p>Chip Number: {selectedDog.chipNumber}</p>
+          <p>
+            Owner: {selectedDog.owner.name}
+            {selectedDog.owner.lastName}
+          </p>
+          <p>Phone Number: {selectedDog.owner.phoneNumber}</p>
+          <p>Sex: {selectedDog.sex}</p>
+        </div>
         {selectedDog.img ? (
           <img src={selectedDog.img} alt={`Dog ${selectedDog.name}`} />
         ) : (

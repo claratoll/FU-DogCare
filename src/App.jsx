@@ -13,7 +13,7 @@ function App() {
   return (
     <div>
       <div className="logo">
-        <h2>Welcome to the Barktastic Adventures</h2>
+        <h1>Welcome to the Barktastic Adventures</h1>
         <p>Where Dogs Feel at Home!</p>
       </div>
       <Routes>
