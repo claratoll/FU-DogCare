@@ -18,12 +18,12 @@ lilac is #30182c
 */
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3em;
   line-height: 1.1;
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 2em;
   margin-bottom: 10px;
   color: #30182c;
 }
@@ -39,7 +39,7 @@ p {
   background-image: url(assets/header.png);
   background-size: cover;
   background-position: center;
-  padding: 100px;
+  padding: 200px;
   background-attachment: fixed;
 }
 
@@ -54,6 +54,7 @@ button {
   font-size: 1em;
   font-family: inherit;
   cursor: pointer;
+  margin: 5px;
   transition: border-color 0.25s;
 }
 
@@ -76,6 +77,12 @@ button:focus-visible {
   background-color: white;
   margin: 30px;
   padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.display_dogs > div {
+  flex: 1;
 }
 
 .display_dogs img {
@@ -98,11 +105,10 @@ button:focus-visible {
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 1.5em;
   }
 
   p {
-    font-size: 10px;
     padding: 3px;
     margin: 0px;
   }
@@ -118,24 +124,28 @@ button:focus-visible {
 
 @media (min-width: 601px) and (max-width: 999px) {
   h1 {
-    font-size: 3em;
+    font-size: 2em;
   }
 
   h2 {
-    font-size: 25px;
+    font-size: 1.7em;
   }
 
   p {
-    font-size: 12px;
     padding: 5px;
     margin: 0px;
   }
 
   .logo {
-    padding: 200px;
+    padding: 140px;
   }
 
   .gallery {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .display_dogs img {
+    width: 50%;
+    height: auto;
   }
 }
