@@ -1,45 +1,74 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import GetDogs from "./GetDogs";
 
-const Dog = (props) => {
-  const [dogData, setDogData] = useState(null);
-  const currentdog = useParams();
+const Dog = () => {
+  const [dogs, setDogs] = useState([]);
+  const params = useParams();
 
-  console.log("dog data is ", dogData);
+  const dogName = params.currentdog;
 
-  // Check if there is a selected dog
-  if (!props.selectedDog) {
-    return <div>No dog data available.</div>;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await GetDogs();
+        setDogs(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    // Check if there is at least one dog in the array
+    if (dogs.length > 0) {
+      console.log("First dog name:", dogs[0].name);
+    } else {
+      console.log("loading dogs");
+    }
+  }, [dogs]);
+
+  console.log("params " + params.currentdog);
+  console.log("dogName is " + dogName);
+
+  const dogsWithSameName = dogs.filter((dog) => dog.name === dogName);
+
+  if (dogsWithSameName.length === 0) {
+    console.log("No dog with the name " + dogName + " found.");
+    return <div>There is no dog with that name.</div>;
   } else {
-    console.log("age is " + props.selectedDog.age);
+    console.log("Found dog with the name " + dogName);
   }
+
+  const displayDog = () => {
+    return dogsWithSameName.map((selectedDog, index) => (
+      <section className="display_dogs" key={index}>
+        <h1>{selectedDog.name}</h1>
+        <p>Age: {selectedDog.age}</p>
+        <p>Breed: {selectedDog.breed}</p>
+        <p>Chip Number: {selectedDog.chipNumber}</p>
+        <p>
+          Owner: {selectedDog.owner.name}
+          {selectedDog.owner.lastName}
+        </p>
+        <p>Phone Number: {selectedDog.owner.phoneNumber}</p>
+        <p>Sex: {selectedDog.sex}</p>
+        {selectedDog.img ? (
+          <img src={selectedDog.img} alt={`Dog ${selectedDog.name}`} />
+        ) : (
+          <div>No dog image available.</div>
+        )}
+      </section>
+    ));
+  };
 
   return (
     <div>
       <Link to="/">
         <button>Home</button>
       </Link>
-      <section className="display_dogs">
-        <h1>{props.selectedDog.name}</h1>
-
-        <p>Age: {props.selectedDog.age}</p>
-        <p>Breed: {props.selectedDog.breed}</p>
-        <p>Chip Number: {props.selectedDog.chipNumber}</p>
-        <p>
-          Owner: {props.selectedDog.owner.name}{" "}
-          {props.selectedDog.owner.lastName}
-        </p>
-        <p>Phone Number: {props.selectedDog.owner.phoneNumber}</p>
-        <p>Sex: {props.selectedDog.sex}</p>
-        {props.selectedDog.img ? (
-          <img
-            src={props.selectedDog.img}
-            alt={`Dog ${props.selectedDog.name}`}
-          />
-        ) : (
-          <div>No dog image available.</div>
-        )}
-      </section>
+      <div>{displayDog()}</div>
     </div>
   );
 };
