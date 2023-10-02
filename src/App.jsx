@@ -10,8 +10,6 @@ import Dog from "./components/Dog";
 function App() {
   //create default image och text om inte det funkar
 
-  const [selectedDog, setSelectedDog] = useState(null);
-
   return (
     <div>
       <div className="logo">
@@ -20,21 +18,9 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Welcome />}></Route>
-        <Route
-          path="/dogs"
-          element={
-            <AllDogs
-              selectedDog={selectedDog}
-              setSelectedDog={setSelectedDog}
-            />
-          }
-        ></Route>
-        {/*  <Route path="/dogs/:currentdog" element={<Dog />}></Route>*/}
-        <Route
-          path="/dogs/:currentdog"
-          setSelectedDog={selectedDog}
-          element={<Dog />}
-        ></Route>
+        <Route path="/dogs" element={<AllDogs />}></Route>
+
+        <Route path="/dogs/:currentdog" element={<Dog />}></Route>
       </Routes>
     </div>
   );
