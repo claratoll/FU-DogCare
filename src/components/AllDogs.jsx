@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GetDogs from "./GetDogs";
 
 const AllDogs = () => {
   const [dogs, setDogs] = useState([]);
+  const navigate = useNavigate();
   const [currentDog, setCurrentDog] = useState(0);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const AllDogs = () => {
         <div className="gallery">
           {dogs.map((dog, index) => (
             <div key={index} className="display_dogs">
-              <Link to={`/dogs/` + dog.name} state={{ dog }}>
+              <Link className="link" to={`/dogs/` + dog.name} state={{ dog }}>
                 <h2>{dog.name}</h2>
               </Link>
 
@@ -63,9 +64,9 @@ const AllDogs = () => {
 
   return (
     <section>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
+      <ul>
+        <li onClick={() => navigate("/")}>Home</li>
+      </ul>
 
       <div>{displayDogImages()}</div>
     </section>

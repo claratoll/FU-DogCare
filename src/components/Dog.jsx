@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import GetDogs from "./GetDogs";
 
 const Dog = () => {
   const [dogs, setDogs] = useState([]);
+  const navigate = useNavigate();
   const params = useParams();
 
   const dogName = params.currentdog;
@@ -43,7 +44,7 @@ const Dog = () => {
 
   const displayDog = () => {
     return dogsWithSameName.map((selectedDog, index) => (
-      <section className="display_dogs" key={index}>
+      <section className="display_one_dog" key={index}>
         <div>
           <h2>{selectedDog.name}</h2>
           <p>Age: {selectedDog.age}</p>
@@ -67,9 +68,10 @@ const Dog = () => {
 
   return (
     <div>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
+      <ul>
+        <li onClick={() => navigate("/")}>Home</li>
+        <li onClick={() => navigate("/dogs")}>All dogs</li>
+      </ul>
       <div>{displayDog()}</div>
     </div>
   );

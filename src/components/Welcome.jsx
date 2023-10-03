@@ -26,38 +26,26 @@ const Welcome = () => {
 
   return (
     <section>
-      <div className="welcome">
-        <div className="gallery">
-          <button onClick={() => navigate("/dogs")}>Meet our dogs</button>
+      <ul>
+        <li onClick={() => navigate("/dogs")}>Meet our dogs</li>
+        <li
+          onClick={() =>
+            handleButtonClick("About us - our team - Facilities content")
+          }
+        >
+          About us
+        </li>
+        <li onClick={() => handleButtonClick("Contact us content")}>
+          Contact us
+        </li>
+        <li onClick={showTermsAndConditions}>Terms and conditions</li>
+        <li onClick={() => handleButtonClick("Map content")}>Map</li>
+      </ul>
 
-          <div>Slide gallery</div>
-          <button
-            onClick={() =>
-              handleButtonClick("About us - our team - Facilities content")
-            }
-          >
-            About us - our team - Facilities
-          </button>
-          <button
-            onClick={() =>
-              handleButtonClick("Services - Register your dog content")
-            }
-          >
-            Services - Register your dog
-          </button>
-          <button onClick={() => handleButtonClick("Contact us content")}>
-            Contact us
-          </button>
-          <button onClick={showTermsAndConditions}>
-            Privacy Policy and Terms and Conditions
-          </button>
-
-          <button onClick={() => handleButtonClick("Map content")}>Map</button>
-        </div>
-        <div className="content">
-          {buttonText === "Map content" ? <Maps /> : buttonText}
-        </div>
+      <div className="content">
+        {buttonText === "Map content" ? <Maps /> : buttonText}
       </div>
+
       <div>Copyright</div>
     </section>
   );

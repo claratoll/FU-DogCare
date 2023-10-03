@@ -1,6 +1,6 @@
 import React from "react";
 
-const Maps = (props) => {
+const Maps = () => {
   const AddressMap = () => {
     return (
       <div className="google-map-code">
