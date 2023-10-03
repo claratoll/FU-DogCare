@@ -25,7 +25,11 @@ h1 {
 h2 {
   font-size: 2em;
   margin-bottom: 10px;
-  color: #30182c;
+  color: #75a89f;
+}
+
+.link {
+  text-decoration: none;
 }
 
 p {
@@ -45,6 +49,12 @@ p {
 
 .logo p {
   color: white;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px;
 }
 
 button {
@@ -74,15 +84,10 @@ button:focus-visible {
 }
 
 .display_dogs {
-  background-color: white;
+  background-color: #fcfbf4;
   margin: 30px;
   padding: 10px;
-  display: flex;
   align-items: center;
-}
-
-.display_dogs > div {
-  flex: 1;
 }
 
 .display_dogs img {
@@ -93,6 +98,21 @@ button:focus-visible {
 
 .display_dogs > h2:hover {
   color: #75a89f;
+}
+
+.display_one_dog {
+  background-color: #fcfbf4;
+  margin: 30px;
+  padding: 10px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.display_one_dog img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .welcome p {
@@ -120,6 +140,14 @@ button:focus-visible {
   .gallery {
     grid-template-columns: 1fr;
   }
+
+  .display_one_dog {
+    justify-items: center;
+    grid-template-columns: 1fr;
+  }
+  .display_one_dog img {
+    align-items: center;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 999px) {
@@ -145,7 +173,7 @@ button:focus-visible {
   }
 
   .display_dogs img {
-    width: 50%;
+    width: 100%;
     height: auto;
   }
 }
