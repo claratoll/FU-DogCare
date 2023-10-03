@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Maps from "./Maps";
+import Hamburger from "./Hamburger";
 
 const Welcome = () => {
   const navigate = useNavigate();
-
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [buttonText, setButtonText] = useState("");
+
+  const toggleHamburger = () => {
+    setHamburgerOpen(!hamburgerOpen);
+  };
 
   const handleButtonClick = (text) => {
     setButtonText(text);
@@ -26,22 +31,28 @@ const Welcome = () => {
 
   return (
     <section>
-      <ul>
-        <li onClick={() => navigate("/dogs")}>Meet our dogs</li>
-        <li
-          onClick={() =>
-            handleButtonClick("About us - our team - Facilities content")
-          }
-        >
-          About us
-        </li>
-        <li onClick={() => handleButtonClick("Contact us content")}>
-          Contact us
-        </li>
-        <li onClick={showTermsAndConditions}>Terms and conditions</li>
-        <li onClick={() => handleButtonClick("Map content")}>Map</li>
-      </ul>
-
+      <nav className="navbar">
+        <div>
+          <ul className={`ul ${hamburgerOpen ? "open" : ""}`}>
+            <div className="hamburger" onClick={toggleHamburger}>
+              <Hamburger isOpen={hamburgerOpen} />
+            </div>
+            <li onClick={() => navigate("/dogs")}>Meet our dogs</li>
+            <li
+              onClick={() =>
+                handleButtonClick("About us - our team - Facilities content")
+              }
+            >
+              About us
+            </li>
+            <li onClick={() => handleButtonClick("Contact us content")}>
+              Contact us
+            </li>
+            <li onClick={showTermsAndConditions}>Terms and conditions</li>
+            <li onClick={() => handleButtonClick("Map content")}>Map</li>
+          </ul>
+        </div>
+      </nav>
       <div className="content">
         {buttonText === "Map content" ? <Maps /> : buttonText}
       </div>

@@ -53,8 +53,13 @@ p {
 
 ul {
   list-style: none;
-  padding: 0;
-  margin: 10px;
+  color: #75a89f;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: #374a5b;
+  padding: 15px;
+  box-shadow: 0 0 5px #000;
 }
 
 button {
@@ -119,6 +124,25 @@ button:focus-visible {
   color: white;
 }
 
+.hamburger {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column nowrap;
+  z-index: 10;
+  display: none;
+}
+
+.burger {
+  width: 2rem;
+  height: 0.25rem;
+  border-radius: 10px;
+  background-color: #30182c;
+  transform-origin: 1px;
+  transition: all 0.3s linear;
+}
+
 @media (max-width: 600px) {
   h1 {
     font-size: 2em;
@@ -147,6 +171,22 @@ button:focus-visible {
   }
   .display_one_dog img {
     align-items: center;
+  }
+
+  .ul li {
+    display: none;
+  }
+
+  .ul.open li {
+    display: block;
+    flex-direction: column;
+  }
+
+  .hamburger {
+    display: flex;
+    padding-top: 10px;
+    margin-left: 10px;
+    z-index: 10;
   }
 }
 
