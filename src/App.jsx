@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import header from "./assets/header.png";
 
 import "./App.css";
 import Welcome from "./components/Welcome";
@@ -14,8 +12,9 @@ function App() {
     <div>
       <div className="logo">
         <h1>Welcome to the Barktastic Adventures</h1>
-        <p>Where Dogs Feel at Home!</p>
+        <p>Where Dogs Feel at Home</p>
       </div>
+
       <Routes>
         <Route path="/" element={<Welcome />}></Route>
         <Route path="/dogs" element={<AllDogs />}></Route>
