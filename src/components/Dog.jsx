@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import GetDogs from "./GetDogs";
+import noimageavailable from "../assets/noimageavailable.png";
 
 const Dog = () => {
   const [dogs, setDogs] = useState([]);
@@ -22,7 +23,6 @@ const Dog = () => {
   }, []);
 
   useEffect(() => {
-    // Check if there is at least one dog in the array
     if (dogs.length > 0) {
       console.log("First dog name:", dogs[0].name);
     } else {
@@ -37,7 +37,6 @@ const Dog = () => {
 
   if (dogsWithSameName.length === 0) {
     console.log("No dog with the name " + dogName + " found.");
-    return <div>There is no dog with that name.</div>;
   } else {
     console.log("Found dog with the name " + dogName);
   }
@@ -58,7 +57,14 @@ const Dog = () => {
           <p>Sex: {selectedDog.sex}</p>
         </div>
         {selectedDog.img ? (
-          <img src={selectedDog.img} alt={`Dog ${selectedDog.name}`} />
+          <img
+            src={selectedDog.img}
+            alt={`Dog ${selectedDog.name}`}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = noimageavailable;
+            }}
+          />
         ) : (
           <div>No dog image available.</div>
         )}

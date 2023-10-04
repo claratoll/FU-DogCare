@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import GetDogs from "./GetDogs";
+import noimageavailable from "../assets/noimageavailable.png";
 
 const AllDogs = () => {
   const [dogs, setDogs] = useState([]);
@@ -20,7 +21,6 @@ const AllDogs = () => {
   }, []);
 
   useEffect(() => {
-    // Check if there is at least one dog in the array
     if (dogs.length > 0) {
       console.log("First dog name:", dogs[0].name);
     } else {
@@ -49,7 +49,14 @@ const AllDogs = () => {
               <p>Phone Number: {dog.owner.phoneNumber}</p>
               <p>Sex: {dog.sex}</p>
               {dog.img ? (
-                <img src={dog.img} alt={`Dog ${dog.name}`} />
+                <img
+                  src={dog.img}
+                  alt={`Dog ${dog.name}`}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = noimageavailable;
+                  }}
+                />
               ) : (
                 <div>No dog image available.</div>
               )}
@@ -58,7 +65,7 @@ const AllDogs = () => {
         </div>
       );
     } else {
-      return <div>No dog data available.</div>;
+      return <div>Dogs are loading</div>;
     }
   };
 
