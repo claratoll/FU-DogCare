@@ -55,7 +55,9 @@ const Dog = () => {
           <p>Breed: {selectedDog.breed}</p>
           <p>Chip Number: {selectedDog.chipNumber}</p>
           <p>
+
             Owner: {selectedDog.owner.name} {selectedDog.owner.lastName}
+
           </p>
           <p>Phone Number: {selectedDog.owner.phoneNumber}</p>
           <p>Sex: {selectedDog.sex}</p>
