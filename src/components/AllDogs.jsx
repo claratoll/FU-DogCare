@@ -39,7 +39,11 @@ const AllDogs = () => {
               <Link className="link" to={`/dogs/` + dog.name} state={{ dog }}>
                 <h2>{dog.name}</h2>
               </Link>
-
+              <p>
+                {dog.present
+                  ? dog.name + " is present today"
+                  : dog.name + " is at home today"}
+              </p>
               <p>Age: {dog.age}</p>
               <p>Breed: {dog.breed}</p>
               <p>Chip Number: {dog.chipNumber}</p>

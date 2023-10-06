@@ -46,12 +46,18 @@ const Dog = () => {
       <section className="display_one_dog" key={index}>
         <div>
           <h2>{selectedDog.name}</h2>
+          <p>
+            {selectedDog.present
+              ? selectedDog.name + " is present today"
+              : selectedDog.name + " is at home today"}
+          </p>
           <p>Age: {selectedDog.age}</p>
           <p>Breed: {selectedDog.breed}</p>
           <p>Chip Number: {selectedDog.chipNumber}</p>
           <p>
-            Owner: {selectedDog.owner.name} 
-            {selectedDog.owner.lastName}
+
+            Owner: {selectedDog.owner.name} {selectedDog.owner.lastName}
+
           </p>
           <p>Phone Number: {selectedDog.owner.phoneNumber}</p>
           <p>Sex: {selectedDog.sex}</p>
