@@ -6,6 +6,8 @@ const Hamburger = ({ isOpen }) => {
         <div className="burger burger2"></div>
         <div className="burger burger3"></div>
       </div>
+
+      {/* det här gick inte att ha i styles pga brackets mitt i */}
       <style>{`
         .burger1 {
             transform: ${isOpen ? "rotate(45deg)" : "rotate(0)"};
